@@ -19,18 +19,14 @@ const questions = createSlice({
     "answered":(state,action) =>{
       return {
         ...state,
-        answered:action.payload.answered,
+        answered:[...state.answered,action.payload.id],
 
       }
     }
   }
 })
-// push({
-//   [actions.payload.id]:{
-//     userEnteredAnswer:actions.payload.data,
-//   }
-// })
 
 
-export const {questionsAnswer} = questions.actions;
+
+export const {questionsAnswer,answered} = questions.actions;
 export const reducer = questions.reducer;
