@@ -1,0 +1,60 @@
+.question div:nth-child(1){
+    height: auto;
+    width: 100vw;
+    font-size: 5vw;
+    color: #5353bf;
+    font-family: sans-serif;
+    text-align: center;
+}
+.question div:nth-child(2){
+    height: auto;
+    width: 100vw;
+    font-size: 2vw;
+    color: #5353bf;
+    font-family: Ubuntu;
+    text-align: center;
+}
+.card-align{
+    display: block;
+}
+.options{
+    margin-top: 6vh;
+    margin-left: 15vw;
+    width: 70vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.options > span{
+    min-height: 6vh;
+    max-height: 8vh;
+    min-width: 24vw;
+    max-width: 30vw;
+    border-radius: 10px;
+    background-color: rgba(83,83,191,0.5);
+    margin: 10px;
+    padding: 10px;
+    font-family: Arial;
+    color: #d7d7dd;
+}
+.options span:nth-child(n):hover{
+    background-color: #4e4eac;
+}
+
+@media only screen and (max-width: 600px) {
+    .question div:nth-child(1){
+        font-size: 7vw;
+        font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    }
+
+    .question div:nth-child(2){
+        font-size: 4vw;
+    }
+    .options > span{
+        min-width: 50vw;
+        min-height: 4vh;
+        max-width: 60vw;
+    }
+}

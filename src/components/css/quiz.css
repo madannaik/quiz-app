@@ -1,0 +1,62 @@
+.main-div{
+    width: 100vw;
+    height: 100vh;
+    background: rgba(168,218,220,0.7);
+    background-repeat: no-repeat;
+    object-fit: cover;
+
+}
+
+.heading{
+    width: 100vw;
+    height: 10vh;
+    text-align: center;
+    color: #4e4eac;
+    font-family: sans-serif;
+    font-size: 3rem;
+}
+.heading h6{
+    margin: 0;
+}
+
+.question-cards{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.footer-progress-bar{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin-top: 10vh;
+    width: 30vw;
+    background-color: #b8e2e2;
+    border-radius: 15px;
+    margin-left: 32vw;
+    justify-content: space-evenly;
+    padding: 3vw;
+}
+
+.myButton{
+    background: #9b9bdd;
+    outline: none;
+    border: none;
+    margin-left: 44vw;
+    margin-top: 2vh;
+    padding: 0.8vw 4vw;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+}
+
+@media only screen and (max-width: 600px) {
+        .footer-progress-bar{
+            width: 45vw;
+            margin-left: 25vw;
+        }
+        .myButton{
+            margin-left: 40vw;
+            padding: 3vw 6vw;
+        }
+
+}
