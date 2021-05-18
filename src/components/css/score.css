@@ -1,0 +1,24 @@
+.score-div{
+    width: 100vw;
+    min-height: 100vh;
+    background: #191919;
+    background-repeat: no-repeat;
+    object-fit: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.score-details{
+
+}
+
+.result{
+    margin:0;
+    color: white;
+}
+.success-ava{
+   width: 10vw;
+    height: 20vh;
+}

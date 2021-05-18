@@ -2,7 +2,7 @@
     height: auto;
     width: 100vw;
     font-size: 5vw;
-    color: #495057;
+    color: #939fa2;
     font-family: source-code-pro;
     letter-spacing: 0;
     text-align: center;
@@ -11,7 +11,7 @@
     height: auto;
     width: 100vw;
     font-size: 2vw;
-    color: #495057;
+    color: #939fa2;
     font-family: Ubuntu;
     text-align: center;
 }
@@ -38,7 +38,7 @@
     margin: 10px;
     padding: 10px;
     font-family: Arial;
-    color: #6c757d;
+    color: #939fa2;
 }
 .options span:nth-child(n):hover{
     background-color: #4e4eac;

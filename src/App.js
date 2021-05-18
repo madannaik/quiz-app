@@ -1,12 +1,20 @@
 
 import './App.css';
 import Quiz from './components/quiz';
+import {HashRouter as Router,Route,} from 'react-router-dom';
+import {Score} from './components/score'
+
 
 function App() {
   return (
-    <div  className="App">
-        <Quiz/>
-    </div>
+
+      <Router>
+        <Route exact path="/" component={Quiz}  />
+        <Route exact path="/score" component={Score} />
+
+      </Router>
+
+
   );
 }
 

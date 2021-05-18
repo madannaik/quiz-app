@@ -2,8 +2,9 @@ import {createSlice} from '@reduxjs/toolkit';
 
 
 const initialState = {
-  answered:[],
+  answered:{},
   currentQuestion:1,
+  score:null,
 };
 const questions = createSlice({
   name:"questions",
@@ -12,17 +13,13 @@ const questions = createSlice({
     "questionsAnswer":(state,actions)=>{
       return {
         ...state,
-        [actions.payload.id]: actions.payload.data,
+        answered: {
+          ...state.answered,
+          [actions.payload.id]: actions.payload.data,
+        }
 
       }
     },
-    // "answered":(state,action) =>{
-    //   return {
-    //     ...state,
-    //     answered:[...state.answered,action.payload.id],
-    //
-    //   }
-    // },
     "changeQuestion":(state,action)=>{
       return {
         ...state,
@@ -33,11 +30,17 @@ const questions = createSlice({
       return {
         ...initialState
       }
-    }
+    },
+    "updateScore":(state ,action ) =>{
+      return {
+        ...state,
+        score: action.payload.score,
+      }
+}
   }
 })
 
 
 
-export const {questionsAnswer,answered,changeQuestion} = questions.actions;
+export const {questionsAnswer,changeQuestion,cleanRedux,updateScore} = questions.actions;
 export const reducer = questions.reducer;

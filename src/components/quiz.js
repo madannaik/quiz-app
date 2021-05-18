@@ -8,24 +8,28 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import data from './data';
 import {ReactReduxContext} from 'react-redux';
-import {changeQuestion} from '../store/questions';
+import {changeQuestion, updateScore} from '../store/questions';
+import {useHistory} from 'react-router-dom';
+import {getMarks} from './constants';
 
 export default function Quiz() {
-  // console.log(data);
+
+  let history = useHistory();
   const [button, setButton] = useState(true);
   const [currentquestion, setCurrentquestion] = useState(1);
   const ques = useContext(ReactReduxContext);
+
+  //to track total number of questions answered
   useEffect(() => {
     checkButton();
     setCurrentquestion(ques.store.getState().currentQuestion);
   }, []);
 
+  //make button visible on answered each and every question
   useEffect(() => {
-    return () => {
-      checkButton();
-
-    };
+    checkButton();
   }, [currentquestion]);
+
 
   const checkButton = () => {
     if (currentquestion === 7) {
@@ -36,25 +40,45 @@ export default function Quiz() {
     }
   };
 
+  //previous question
   const onbackClick = () => {
 
-    if (currentquestion !== 1){
+    if (currentquestion !== 1) {
       setCurrentquestion(currentquestion - 1);
       ques.store.dispatch(changeQuestion({
-        current: currentquestion-1,
+        current: currentquestion - 1,
       }));
     }
   };
 
+  //next question
   const onfrontClick = () => {
 
     if (currentquestion !== 7) {
       setCurrentquestion(currentquestion + 1);
       ques.store.dispatch(changeQuestion({
-        current: currentquestion+1,
+        current: currentquestion + 1,
       }));
     }
 
+  };
+
+  //on click submit check if all question answered,
+  //if yes calculate score and update score
+  //if no dont push
+  
+  const onSubmit = () => {
+    var myobj = ques.store.getState().answered;
+    console.log(myobj);
+    var count = Object.keys(myobj).length;
+    var score = getMarks(myobj);
+    console.log(score);
+    if (count === 7) {
+      ques.store.dispatch(updateScore({
+        score: score,
+      }));
+      history.push('/score');
+    }
   };
 
   return (
@@ -80,7 +104,7 @@ export default function Quiz() {
           </div>
         </div>
         <div>
-          <button className="myButton" disabled={button}>
+          <button className="myButton" disabled={button} onClick={onSubmit}>
             Submit
           </button>
         </div>

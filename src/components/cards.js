@@ -1,7 +1,7 @@
 import {React, useContext, useEffect, useRef, useState} from 'react';
 import  "./css/cards.css"
 import {ReactReduxContext} from 'react-redux';
-import {questionsAnswer} from '../store/questions'
+import {questionsAnswer,cleanRedux} from '../store/questions'
 import data from '../components/data';
 
 
@@ -17,34 +17,38 @@ export const Cards = ({question={},question_number})=>{
 
   //run getAnswer when question number changes
   useEffect(()=>{
+    // ques.store.dispatch(cleanRedux())
+
+    var myobj = ques.store.getState().answered;
+    var count = Object.keys(myobj).length;
+    console.log(count);
     getAnswerState();
   },[question_number,]);
 
 
   //prefetch  the user entered answer for questions
   const getAnswerState = () =>{
-    const answer = ques.store.getState()[question_number];
-    console.log(answer);
+    const answer = ques.store.getState().answered[question_number];
+    // console.log(answer);
     setActive(active.map((data,index)=>{
-      console.log(index,answer);
       if(index+1===parseInt(answer)) return true
       else return false
     }))
-    console.log(active);
+
   }
 
 
   //when user clicks on different options update the answer in redux-answer and run getAnswer for updated ui element
   const onClick = (id)=>{
-    console.log(active);
+
 
     ques.store.dispatch(questionsAnswer({
       id:question_number,
       data:id.target.id,
     }));
     getAnswerState();
-    const answer = ques.store.getState();
-      console.log(answer);
+    // const answer = ques.store.getState();
+      // console.log(answer);
   }
 
 
