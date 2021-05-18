@@ -54,6 +54,7 @@
 
 .myButton:disabled{
     color: #bababa;
+    cursor: not-allowed;
 }
 
 @media only screen and (max-width: 600px) {

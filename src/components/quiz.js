@@ -66,7 +66,7 @@ export default function Quiz() {
   //on click submit check if all question answered,
   //if yes calculate score and update score
   //if no dont push
-  
+
   const onSubmit = () => {
     var myobj = ques.store.getState().answered;
     console.log(myobj);
