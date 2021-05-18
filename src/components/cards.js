@@ -8,18 +8,20 @@ import data from '../components/data';
 
 export const Cards = ({question={},question_number})=>{
 
-
+  //accessing redux-store
   const ques = useContext(ReactReduxContext);
+
+
   const [active, setActive] = useState([false,false,false,false]);
 
 
-
+  //run getAnswer when question number changes
   useEffect(()=>{
     getAnswerState();
   },[question_number,]);
 
 
-  //gets user pressed answer and sets
+  //prefetch  the user entered answer for questions
   const getAnswerState = () =>{
     const answer = ques.store.getState()[question_number];
     console.log(answer);
@@ -31,6 +33,8 @@ export const Cards = ({question={},question_number})=>{
     console.log(active);
   }
 
+
+  //when user clicks on different options update the answer in redux-answer and run getAnswer for updated ui element
   const onClick = (id)=>{
     console.log(active);
 
@@ -42,6 +46,8 @@ export const Cards = ({question={},question_number})=>{
     const answer = ques.store.getState();
       console.log(answer);
   }
+
+
   return <div className="cards-align">
     <div className="question">
       <div>

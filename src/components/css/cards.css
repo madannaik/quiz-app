@@ -2,7 +2,7 @@
     height: auto;
     width: 100vw;
     font-size: 5vw;
-    color: #5353bf;
+    color: #495057;
     font-family: source-code-pro;
     letter-spacing: 0;
     text-align: center;
@@ -11,7 +11,7 @@
     height: auto;
     width: 100vw;
     font-size: 2vw;
-    color: #5353bf;
+    color: #495057;
     font-family: Ubuntu;
     text-align: center;
 }
@@ -38,7 +38,7 @@
     margin: 10px;
     padding: 10px;
     font-family: Arial;
-    color: #d7d7dd;
+    color: #6c757d;
 }
 .options span:nth-child(n):hover{
     background-color: #4e4eac;
@@ -47,7 +47,7 @@
     background-color: rgba(83, 83, 191, 0.5);
 }
 .active{
-    background: #7a2c2c;
+    background: #583073;
 }
 
 @media only screen and (max-width: 600px) {
@@ -65,6 +65,6 @@
         max-width: 60vw;
     }
     .options span:nth-child(n):hover{
-
+        background: #583073;
     }
 }
