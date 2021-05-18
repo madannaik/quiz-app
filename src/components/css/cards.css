@@ -3,7 +3,8 @@
     width: 100vw;
     font-size: 5vw;
     color: #5353bf;
-    font-family: sans-serif;
+    font-family: source-code-pro;
+    letter-spacing: 0;
     text-align: center;
 }
 .question div:nth-child(2){
@@ -33,7 +34,7 @@
     min-width: 24vw;
     max-width: 30vw;
     border-radius: 10px;
-    background-color: rgba(83,83,191,0.5);
+
     margin: 10px;
     padding: 10px;
     font-family: Arial;
@@ -41,6 +42,12 @@
 }
 .options span:nth-child(n):hover{
     background-color: #4e4eac;
+}
+.not-active{
+    background-color: rgba(83, 83, 191, 0.5);
+}
+.active{
+    background: #7a2c2c;
 }
 
 @media only screen and (max-width: 600px) {
@@ -56,5 +63,8 @@
         min-width: 50vw;
         min-height: 4vh;
         max-width: 60vw;
+    }
+    .options span:nth-child(n):hover{
+        background-color: rgba(83, 83, 191, 0.5);
     }
 }

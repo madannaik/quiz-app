@@ -1,8 +1,9 @@
 import {createSlice} from '@reduxjs/toolkit';
-import {act} from '@testing-library/react';
+
 
 const initialState = {
   answered:[],
+  currentQuestion:1,
 };
 const questions = createSlice({
   name:"questions",
@@ -11,16 +12,26 @@ const questions = createSlice({
     "questionsAnswer":(state,actions)=>{
       return {
         ...state,
-        [actions.payload.id]:{
-          userEnteredAnswer:actions.payload.data,
-        }
+        [actions.payload.id]: actions.payload.data,
+
       }
     },
-    "answered":(state,action) =>{
+    // "answered":(state,action) =>{
+    //   return {
+    //     ...state,
+    //     answered:[...state.answered,action.payload.id],
+    //
+    //   }
+    // },
+    "changeQuestion":(state,action)=>{
       return {
         ...state,
-        answered:[...state.answered,action.payload.id],
-
+        currentQuestion: action.payload.current,
+      }
+    },
+    "cleanRedux":(state)=>{
+      return {
+        ...initialState
       }
     }
   }
@@ -28,5 +39,5 @@ const questions = createSlice({
 
 
 
-export const {questionsAnswer,answered} = questions.actions;
+export const {questionsAnswer,answered,changeQuestion} = questions.actions;
 export const reducer = questions.reducer;
