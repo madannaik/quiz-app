@@ -2,13 +2,13 @@ import userdata from './data';
 
 export const getState = (data) =>{
   if(data<=1){
-    return "Try harder next time"
+    return "Try harder next time😉"
   }
   else if(data>1 && data<7){
-    return "Good Job"
+    return "Good Job🥳"
   }
   else
-    return  "Excellent";
+    return  "Excellent🤑";
 }
 
 export const getMarks = (useranswer={}) =>{

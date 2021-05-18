@@ -30,7 +30,6 @@ export default function Quiz() {
     checkButton();
   }, [currentquestion]);
 
-
   const checkButton = () => {
     if (currentquestion === 7) {
 
