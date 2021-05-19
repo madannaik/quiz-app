@@ -17,7 +17,6 @@ const questions = createSlice({
           ...state.answered,
           [actions.payload.id]: actions.payload.data,
         }
-
       }
     },
     "changeQuestion":(state,action)=>{
