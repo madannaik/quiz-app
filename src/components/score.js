@@ -7,7 +7,7 @@ import {ReactReduxContext} from 'react-redux';
 
 export const Score = ()=>{
   const store = React.useContext(ReactReduxContext)
-  const score = store.store.getState().score;
+  const score = store.store.getState().answered.score;
   React.useEffect(() => {
     return () => {
       store.store.dispatch(cleanRedux({}));

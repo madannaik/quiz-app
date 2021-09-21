@@ -1,4 +1,4 @@
-import {configureStore,getDefaultMiddleware} from '@reduxjs/toolkit';
+import { configureStore, getDefaultMiddleware, combineReducers } from '@reduxjs/toolkit';
 
 import {
   persistStore,
@@ -11,8 +11,9 @@ import {
   REGISTER
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage'
+import { loginStore } from './login';
 
-import {reducer} from './questions';
+import { reducer } from './questions';
 
 
 const persistConfig = {
@@ -20,9 +21,12 @@ const persistConfig = {
   version: 1,
   storage,
 }
+const combine = combineReducers({
+  answered:reducer,
+  login:loginStore
+})
 
-
-const persistedReducer = persistReducer(persistConfig, reducer)
+const persistedReducer = persistReducer(persistConfig, combine)
 
 
 export const store = configureStore({
@@ -33,4 +37,4 @@ export const store = configureStore({
     },
   }),
 })
-export const  persistor = persistStore(store);
+export const persistor = persistStore(store);

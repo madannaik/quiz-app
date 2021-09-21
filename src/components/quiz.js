@@ -11,6 +11,7 @@ import {ReactReduxContext} from 'react-redux';
 import {changeQuestion, updateScore} from '../store/questions';
 import {useHistory} from 'react-router-dom';
 import {getMarks} from './constants';
+import CountDownTimer from './CountDown';
 
 export default function Quiz() {
 
@@ -22,7 +23,7 @@ export default function Quiz() {
   //to track total number of questions answered
   useEffect(() => {
     checkButton();
-    setCurrentquestion(ques.store.getState().currentQuestion);
+    setCurrentquestion(ques.store.getState().answered.currentQuestion);
   }, []);
 
   //make button visible on answered each and every question
@@ -65,9 +66,9 @@ export default function Quiz() {
   //on click submit check if all question answered,
   //if yes calculate score and update score
   //if no dont push
-
+  
   const onSubmit = () => {
-    var myobj = ques.store.getState().answered;
+    var myobj = ques.store.getState().answered.answered;
     console.log(myobj);
     var count = Object.keys(myobj).length;
     var score = getMarks(myobj);
@@ -80,10 +81,16 @@ export default function Quiz() {
     }
   };
 
+  const hoursMinSecs = { minutes: 7, seconds: 0}
+
   return (
       <div className="main-div">
         <div className="heading">
-          <h6>Personality Quiz</h6>
+          <h6>React Quiz</h6>
+          <div className="timer">
+              
+              <CountDownTimer hoursMinSecs={hoursMinSecs} />
+          </div>
         </div>
         <div className="question-cards">
           <Cards question={data[`${currentquestion}`]}

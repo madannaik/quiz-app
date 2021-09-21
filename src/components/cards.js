@@ -1,8 +1,8 @@
 import {React, useContext, useEffect, useRef, useState} from 'react';
 import  "./css/cards.css"
 import {ReactReduxContext} from 'react-redux';
-import {questionsAnswer,cleanRedux} from '../store/questions'
-import data from '../components/data';
+import {questionsAnswer} from '../store/questions'
+// import data from '../components/data';
 
 
 
@@ -19,16 +19,16 @@ export const Cards = ({question={},question_number})=>{
   useEffect(()=>{
     // ques.store.dispatch(cleanRedux())
 
-    var myobj = ques.store.getState().answered;
+    var myobj = ques.store.getState().answered.answered;
     var count = Object.keys(myobj).length;
     console.log(count);
     getAnswerState();
-  },[question_number,]);
+  },[question_number]);
 
 
   //prefetch  the user entered answer for questions
   const getAnswerState = () =>{
-    const answer = ques.store.getState().answered[question_number];
+    const answer = ques.store.getState().answered.answered[question_number];
     // console.log(answer);
     setActive(active.map((data,index)=>{
       if(index+1===parseInt(answer)) return true
