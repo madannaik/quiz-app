@@ -1,4 +1,4 @@
-import {React, useContext, useEffect, useRef, useState} from 'react';
+import {React, useContext, useEffect, useState} from 'react';
 import  "./css/cards.css"
 import {ReactReduxContext} from 'react-redux';
 import {questionsAnswer} from '../store/questions'
@@ -14,7 +14,16 @@ export const Cards = ({question={},question_number})=>{
 
   const [active, setActive] = useState([false,false,false,false]);
 
+  //prefetch  the user entered answer for questions
+  const getAnswerState = () =>{
+    const answer = ques.store.getState().answered.answered[question_number];
+    // console.log(answer);
+    setActive(active.map((data,index)=>{
+      if(index+1===parseInt(answer)) return true
+      else return false
+    }))
 
+  }
   //run getAnswer when question number changes
   useEffect(()=>{
     // ques.store.dispatch(cleanRedux())
@@ -26,16 +35,7 @@ export const Cards = ({question={},question_number})=>{
   },[question_number]);
 
 
-  //prefetch  the user entered answer for questions
-  const getAnswerState = () =>{
-    const answer = ques.store.getState().answered.answered[question_number];
-    // console.log(answer);
-    setActive(active.map((data,index)=>{
-      if(index+1===parseInt(answer)) return true
-      else return false
-    }))
 
-  }
 
 
   //when user clicks on different options update the answer in redux-answer and run getAnswer for updated ui element

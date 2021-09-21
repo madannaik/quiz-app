@@ -1,9 +1,9 @@
 import React from 'react'
-import { ReactReduxContext } from 'react-redux';
-import { actionTime } from '../store/login';
+// import { ReactReduxContext } from 'react-redux';
+// import { actionTime } from '../store/login';
 
 const CountDownTimer = ({ hoursMinSecs }) => {
-    const store = React.useContext(ReactReduxContext);
+    // const store = React.useContext(ReactReduxContext);
     const { minutes = 0, seconds = 60 } = hoursMinSecs;
     const [[mins, secs], setTime] = React.useState([minutes, seconds]);
 
@@ -20,7 +20,7 @@ const CountDownTimer = ({ hoursMinSecs }) => {
     };
 
 
-    const reset = () => setTime([parseInt(minutes), parseInt(seconds)]);
+    // const reset = () => setTime([parseInt(minutes), parseInt(seconds)]);
 
 
     React.useEffect(() => {

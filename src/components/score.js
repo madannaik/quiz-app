@@ -2,7 +2,7 @@ import React from 'react';
 import './css/score.css'
 import avatar from "../svg/success.svg"
 import {getState} from './constants';
-import {changeQuestion, cleanRedux} from '../store/questions';
+import { cleanRedux} from '../store/questions';
 import {ReactReduxContext} from 'react-redux';
 
 export const Score = ()=>{
@@ -12,7 +12,7 @@ export const Score = ()=>{
     return () => {
       store.store.dispatch(cleanRedux({}));
     };
-  }, []);
+  });
 
 
 
