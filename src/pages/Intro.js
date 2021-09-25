@@ -1,18 +1,19 @@
 import React, { useContext } from 'react';
 import "./Intro.css";
 import { useHistory } from 'react-router';
-import { getAuth, signInWithPopup, GoogleAuthProvider,GithubAuthProvider } from "firebase/auth";
+import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from "firebase/auth";
 import { ReactReduxContext } from 'react-redux';
 import { actionLogin } from '../store/login';
+import { doc, addDoc, collection, setDoc, getFirestore } from "firebase/firestore";
 export const Intro = () => {
-
+    const db = getFirestore();
     const provider = new GoogleAuthProvider();
     const providerGit = new GithubAuthProvider();
     const auth = getAuth();
     const his = useHistory();
     const loginSt = useContext(ReactReduxContext);
-    const signInWithGitHub = ()=>{
-        signInWithPopup(auth,providerGit).then((result)=>{
+    const signInWithGitHub = () => {
+        signInWithPopup(auth, providerGit).then((result) => {
             // const credential = GithubAuthProvider.credentialFromResult(result);
             // const token = credential.accessToken;
             // The signed-in user info.
@@ -20,7 +21,9 @@ export const Intro = () => {
             // loginSt.store.dispatch(actionLogin({
             //     email: user.email,
             // }))
+
             console.log(user.email);
+
             // ...
         })
     }
@@ -36,6 +39,18 @@ export const Intro = () => {
                 loginSt.store.dispatch(actionLogin({
                     email: user.email,
                 }))
+                try {
+                    addDoc(collection(db, "users"), {
+                        first: "Ada",
+                        last: "Lovelace",
+                        born: 1815
+                    }).then(data => {
+                        console.log("Document written with ID: ", data.id);
+                    }).finally(e=>console.log(e));
+
+                } catch (e) {
+                    console.error("Error adding document: ", e);
+                }
                 // console.log(user);
                 // ...
             }).catch((error) => {

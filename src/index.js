@@ -8,15 +8,15 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import dotenv from "dotenv";
-dotenv.config("config.env");
+dotenv.config();
 const firebaseConfig = {
-  apiKey: process.env.REACT_APP_API_KEY,
-  authDomain: process.env.REACT_APP_AUTH_DOMAIN,
-  projectId: process.env.PROJECT_ID_,
-  storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
-  messagingSenderId: process.env.REACT_APP_MESSAGE_SENDER_ID,
-  appId: process.env.REACT_APP_APP_ID,
-  measurementId: process.env.REACT_APP_MEASUREMENT_ID,
+  apiKey: "AIzaSyBxQd5RNuxAD-QA_-8gWEKqrLlie5hsxu4",
+  authDomain: "quizx-afdb3.firebaseapp.com",
+  projectId: "quizx-afdb3",
+  storageBucket: "quizx-afdb3.appspot.co",
+  messagingSenderId: "956871966005",
+  appId: "1:956871966005:web:d9d7de13fad7ed38bb207c",
+  measurementId: "G-MTZ2XJMVDM"
 };
 const app = initializeApp(firebaseConfig);
 export const analytics = getAnalytics(app);
