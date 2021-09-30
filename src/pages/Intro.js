@@ -5,6 +5,7 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, GithubAuthProvider } from
 import { ReactReduxContext } from 'react-redux';
 import { actionLogin } from '../store/login';
 import { doc, addDoc, collection, setDoc, getFirestore } from "firebase/firestore";
+import { cleanRedux} from '../store/questions';
 export const Intro = () => {
     const db = getFirestore();
     const provider = new GoogleAuthProvider();
@@ -33,17 +34,17 @@ export const Intro = () => {
                 // This gives you a Google Access Token. You can use it to access the Google API.
                 // const credential = GoogleAuthProvider.credentialFromResult(result);
                 // const token = credential.accessToken;
-                // The signed-in user info.
+                // The signed-in user info.  
                 const user = result.user;
                 console.log(user);
                 loginSt.store.dispatch(actionLogin({
                     email: user.email,
                 }))
+                his.push("/quiz");
                 try {
-                    addDoc(collection(db, "users"), {
-                        first: "Ada",
-                        last: "Lovelace",
-                        born: 1815
+                    addDoc(collection(db, user.email), {
+                        currentQuestion:"",
+                        score:""
                     }).then(data => {
                         console.log("Document written with ID: ", data.id);
                     }).finally(e=>console.log(e));
@@ -56,15 +57,13 @@ export const Intro = () => {
             }).catch((error) => {
                 // Handle Errors here.
                 console.log(error);
-                // const errorCode = error.code;
-                // const errorMessage = error.message;
-                // The email of the user's account used.
-                // const email = error.email;
-                // The AuthCredential type that was used.
-                // const credential = GoogleAuthProvider.credentialFromError(error);
-                // ...
+           
             });
     }
+    React.useEffect(() => {
+        loginSt.store.dispatch(cleanRedux({}));
+    
+    }, [])
 
     return (
         <div className="intro">

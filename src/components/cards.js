@@ -1,9 +1,8 @@
 import {React, useContext, useEffect, useState} from 'react';
-import  "./css/cards.css"
+import  "./css/cards.css";
 import {ReactReduxContext} from 'react-redux';
 import {questionsAnswer} from '../store/questions'
 // import data from '../components/data';
-
 
 
 export const Cards = ({question={},question_number})=>{
@@ -24,10 +23,10 @@ export const Cards = ({question={},question_number})=>{
     }))
 
   }
-  //run getAnswer when question number changes
+  //  run getAnswer when question number changes
   useEffect(()=>{
     // ques.store.dispatch(cleanRedux())
-
+    
     var myobj = ques.store.getState().answered.answered;
     var count = Object.keys(myobj).length;
     console.log(count);
@@ -40,7 +39,6 @@ export const Cards = ({question={},question_number})=>{
 
   //when user clicks on different options update the answer in redux-answer and run getAnswer for updated ui element
   const onClick = (id)=>{
-
 
     ques.store.dispatch(questionsAnswer({
       id:question_number,

@@ -7,8 +7,6 @@ const CountDownTimer = ({ hoursMinSecs }) => {
     const { minutes = 0, seconds = 60 } = hoursMinSecs;
     const [[mins, secs], setTime] = React.useState([minutes, seconds]);
 
-    
-
     const tick = () => {
         if (mins === 0 && secs === 0) {
             setTime([59, 59]);

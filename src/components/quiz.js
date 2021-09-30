@@ -19,7 +19,7 @@ export default function Quiz() {
   const [button, setButton] = useState(true);
   const [currentquestion, setCurrentquestion] = useState(1);
   const ques = useContext(ReactReduxContext);
-
+  
   //to track total number of questions answered
   useEffect(() => {
     checkButton();

@@ -1,7 +1,6 @@
 // eslint-disable-next-line import/no-anonymous-default-export
 export default {
   1: {
-
     question: 'We can go for keys when there is possibility that our user could change the data?',
     answers: [
       'Keys',
