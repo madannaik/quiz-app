@@ -148,6 +148,7 @@
   position: relative;
   font-size: .8rem;
   font-weight: bold;
+  cursor: pointer;
 }
 .login-with-google::before{
   position: absolute;
@@ -170,6 +171,7 @@
   font-size: .8rem;
   font-weight: bold;
   position: relative;
+  cursor: pointer;
 }
 .login-with-github::before{
   position: absolute;
@@ -180,4 +182,24 @@
   height: 100%;
   background-image: url("./Github.svg");
   background-repeat: no-repeat;
+}
+@media (max-width:900px) {
+  .intro__svg{
+    display: none;
+  }
+  .intro__details{
+    flex-basis: 100vw;
+  }
+  .validate{
+    width: 400px;
+  }
+  /* .validate__form{
+    padding: 1rem .5rem;
+    
+  } */
+}
+@media (max-width:440px) {
+  .validate{
+    width: 90vw;
+  }
 }

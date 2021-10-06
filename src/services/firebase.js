@@ -1,2 +1,4 @@
 
 
+
+export const docPath = "userdetails";

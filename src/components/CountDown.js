@@ -1,6 +1,4 @@
 import React from 'react'
-// import { ReactReduxContext } from 'react-redux';
-// import { actionTime } from '../store/login';
 
 const CountDownTimer = ({ hoursMinSecs }) => {
     // const store = React.useContext(ReactReduxContext);
